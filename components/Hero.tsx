@@ -13,7 +13,7 @@ const Hero = () => {
           obcaecati consequuntur voluptates voluptas sint deleniti accusantium
           eos a repudiandae odio.
         </p>
-        <button className="bg-secondary flex justify-center items-center gap-x-4 w-full h-[50px]  text-2xl">
+        <button className="bg-secondary text-white flex justify-center items-center gap-x-4 w-full h-[50px]  text-2xl">
           <i className="bi bi-cart"></i>
           <p>Buy Now</p>
         </button>
