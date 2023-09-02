@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 
 const Categories = () => {
   return (
-    <div className="bg-primary pt-10 py-4 lg:px-20 px-6">
+    <div className="bg-black-700  pt-10 py-4 lg:px-20 px-6">
       <div className="  my-8  gap-y-4">
         <h1 className="text-3xl font-bold text-secondary">Items</h1>
         <p className="text-[white]">

@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="h-[400px] px-5 lg:px-20 lg:h-screen bg-primary w-full flex flex-col justify-center items-center">
+    <div className="h-[400px] px-5 lg:px-20 lg:h-screen bg-black w-full flex flex-col justify-center items-center">
       <img src="/cup.png" className="w-2/6 mt-10 " alt="" />
       <div className="gap-y-4 flex flex-col w-full justify-center items-center">
         <h1 className="capitalize text-4xl font-extrabold text-secondary ">
@@ -17,6 +17,13 @@ const Hero = () => {
           <i className="bi bi-cart"></i>
           <p>Buy Now</p>
         </button>
+
+        <div className="w-full inline-flex justify-center items-center ">
+          <div className="text-secondary text-xl relative bg-[#1D1D1D] rounded-full py-1 px-2">
+            <i className="bi bi-cup-hot-fill absolute animate-ping"></i>
+            <i className="bi bi-cup-hot-fill "></i>
+          </div>
+        </div>
       </div>
     </div>
   );
