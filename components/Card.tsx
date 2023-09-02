@@ -1,6 +1,6 @@
 const Card = () => {
   return (
-    <div className="text-black  bg-[#101010] rounded-lg shadow ">
+    <div className="text-black  bg-[#3b23144f] rounded-lg shadow ">
       <a href="#" className="w-full">
         <img
           className="rounded-t-lg"
@@ -17,7 +17,7 @@ const Card = () => {
 
         <div className="group w-full inline-flex text-white justify-center gap-x-4 items-center px-3 py-2  bg-secondary rounded-lg focus:outline-none ">
           <h2 className="font-bold text-xl">Get</h2>
-          <i className="bi bi-cup-hot-fill text-xl group-[]:hover:animate-pulse"></i>
+          <i className="bi bi-cup-hot-fill text-xl group-[hover:animate-pulse]"></i>
         </div>
       </div>
     </div>
