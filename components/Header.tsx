@@ -28,7 +28,7 @@ const Header = () => {
           <i className="bi  bi-text-right text-2xl  text-secondary"></i>
         </div>
         <nav
-          className={`mobileNav w-[80%] h-screen lg:hidden  absolute top-0  flex justify-center items-center bg-[#120B06] z-10 -right-[80%]`}
+          className={`mobileNav w-[80%] h-screen lg:hidden text-white  absolute top-0  flex justify-center items-center bg-[#120B06] z-10 -right-[80%]`}
         >
           <i
             onClick={openFunc}
