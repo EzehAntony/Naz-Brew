@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header bg-black w-full relative" ref={ref}>
+    <header className="header bg-black w-full fixed z-20" ref={ref}>
       <div className="mx-5 flex h-16 max-w-screen-xl justify-between items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Logo styles="" />
 
