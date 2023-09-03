@@ -11,7 +11,7 @@ const Hero = () => {
         <h1 className="capitalize text-4xl font-extrabold text-secondary ">
           Get a cup of coffee
         </h1>
-        <p className="text-center text-md">
+        <p className="text-white text-center text-md">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
           obcaecati consequuntur voluptates voluptas sint deleniti accusantium
           eos a repudiandae odio.
