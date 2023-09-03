@@ -46,7 +46,7 @@ export default function Home() {
               router.push("/home");
             },
           },
-          "<+0.5"
+          "<+2"
         );
     });
 
@@ -64,7 +64,7 @@ export default function Home() {
         <i className="bi bi-cup-hot-fill "></i>
       </div>
       <div
-        className="text font-bold transform-[rotate(-90deg)] flex items-baseline p-0 m-0 capitalize text-4xl "
+        className="font-bold transform-[rotate(-90deg)] flex items-baseline p-0 m-0 capitalize text-4xl text-white "
         id="text"
       >
         <span className="flex text-secondary">
