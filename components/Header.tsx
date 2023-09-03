@@ -10,7 +10,6 @@ const Header = () => {
   const [open, setOpen] = useState(true);
 
   const openFunc = () => {
-    gsap.to("", { overflowX: "none" });
     if (open) {
       setOpen(false);
       gsap.to(".mobileNav", { right: "0" });
@@ -20,11 +19,8 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
   return (
-    <header className="bg-black w-full relative" ref={ref}>
+    <header className="header bg-black w-full relative" ref={ref}>
       <div className="mx-5 flex h-16 max-w-screen-xl justify-between items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Logo styles="" />
 
