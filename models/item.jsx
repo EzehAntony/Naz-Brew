@@ -8,4 +8,4 @@ const itemSchema = new mongoose.Schema({
   purchased: { type: Number },
 });
 
-module.exports = mongoose.models.item || mongoose.model("item", itemSchema);
+export default mongoose.models.item || mongoose.model("item", itemSchema);
