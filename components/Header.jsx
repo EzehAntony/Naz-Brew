@@ -3,11 +3,15 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "@/components/Logo";
 import { gsap } from "gsap";
+import { cartStore } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const cartCount = cartStore((state) => state.cart);
   const ref = useRef(null);
   const g = gsap.utils.selector(ref);
   const [open, setOpen] = useState(true);
+  const router = useRouter();
 
   const openFunc = () => {
     if (open) {
@@ -24,7 +28,16 @@ const Header = () => {
       <div className="mx-5 flex h-16 max-w-screen-xl justify-between items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Logo styles="" />
 
-        <div onClick={openFunc} className="cursor-pointer">
+        <div onClick={openFunc} className="flex cursor-pointer space-x-8 ">
+          <div className="relative justify-center items-center ">
+            <i className="text-center text-white bg-secondary absolute rounded-full px-2 -right-4 text-sm font-sans">
+              {cartCount.length}
+            </i>
+            <i
+              onClick={() => router.push("/cart")}
+              className="bi  bi-cart2 text-2xl  text-secondary"
+            ></i>
+          </div>
           <i className="bi  bi-text-right text-2xl  text-secondary"></i>
         </div>
         <nav
@@ -34,6 +47,7 @@ const Header = () => {
             onClick={openFunc}
             className="bi bi-x cursor-pointer text-white absolute top-4 right-4 text-4xl "
           ></i>
+
           <ul className="capitalize w-full ">
             <li className="px-4 py-4 hover:text-4xl text-2xl">Order</li>
             <li className="px-4 py-4 hover:text-4xl text-2xl">Contact Us</li>

@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useEffect, useState, useRef } from "react";
 import Card from "@/components/Card";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { allData } from "@/allData";
+import axios from "axios";
 
 const Categories = () => {
   const ref = useRef(null);
@@ -11,6 +13,8 @@ const Categories = () => {
   const t1 = gsap.timeline({});
   gsap.registerPlugin(ScrollTrigger);
   const flavors = ["", "", ""];
+  const [products, setProducts] = useState<any>();
+  const [loading, setLoading] = useState(false);
 
   //gsap
   useLayoutEffect(() => {
@@ -42,6 +46,18 @@ const Categories = () => {
     return () => ctx.revert();
   });
 
+  useEffect(() => {
+    setLoading(true);
+    axios(`/api/items/find`)
+      .then((res: any) => {
+        setProducts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -57,11 +73,12 @@ const Categories = () => {
         </p>
       </div>
       <div id={"group"} className="  grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {flavors.map((e) => (
-          <div id="card">
-            <Card />
-          </div>
-        ))}
+        {products &&
+          products.data.map((e: any, i: any) => (
+            <div key={i} id="card">
+              <Card data={e} />
+            </div>
+          ))}
       </div>
     </div>
   );

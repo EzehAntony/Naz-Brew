@@ -1,0 +1,16 @@
+import dbConnect from "@/lib/mongodb";
+import item from "@/models/item";
+import { NextResponse } from "next/server";
+
+export const GET = async (req: any, { params }: { params: any }) => {
+  await dbConnect();
+  try {
+    const product = await item.findOne({ _id: params.id });
+    return NextResponse.json({ data: product }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json(
+      { message: "An unexpected error has occured" },
+      { status: 200 }
+    );
+  }
+};
