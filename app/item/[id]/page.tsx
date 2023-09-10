@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 import Header from "@/components/Header";
 import DescriptionSkeleton from "@/components/DescriptionSkeleton";
 import { cartStore } from "@/store/store";
-
+import { Helpers } from "@/helpers/data";
 const page = ({
   params,
 }: {
@@ -46,6 +46,21 @@ const page = ({
   };
 
   useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const productData = await Helpers.fetchData(
+        `http://localhost:3000/api/items/find/${params.id}`
+      );
+      if (productData.data) {
+        setProduct(productData.data);
+      } else {
+        setProduct(productData);
+      }
+      setLoading(false);
+    })();
+  }, []);
+
+  /*   useEffect(() => {
     setLoading(true);
     axios(`/api/items/find/${params.id}`)
       .then((res: any) => {
@@ -55,7 +70,7 @@ const page = ({
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); */
   return (
     <section className="w-full text-gray-600 dark:text-white dark:bg-[#000] body-font overflow-hidden">
       <Header />
@@ -97,7 +112,7 @@ const page = ({
               {!product && <DescriptionSkeleton />}
             </div>
 
-            <div className="flex justify-between mt-8">
+            <div className="fixed bottom-0 w-full left-0 p-8 flex justify-between mt-8">
               <div>
                 <span className="title-font font-medium text-2xl dark:text-white text-gray-900">
                   {product && `₦ ${product.price}`}

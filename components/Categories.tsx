@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { allData } from "@/allData";
 import axios from "axios";
+import { Helpers } from "@/helpers/data";
 
 const Categories = () => {
   const ref = useRef(null);
@@ -47,6 +48,18 @@ const Categories = () => {
   });
 
   useEffect(() => {
+    const allData = async () => {
+      setLoading(true);
+      const data = await Helpers.fetchData(
+        "http://localhost:3000/api/items/find"
+      );
+      setProducts(data);
+      setLoading(false);
+    };
+    allData();
+  }, []);
+
+  /*   useEffect(() => {
     setLoading(true);
     axios(`/api/items/find`)
       .then((res: any) => {
@@ -56,7 +69,9 @@ const Categories = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); */
+
+  useEffect(() => {});
 
   return (
     <div
