@@ -51,7 +51,7 @@ const page = () => {
 
                     <div className="flex flex-1 items-center justify-end gap-2">
                       <form>
-                        <label for="Line1Qty" className="sr-only">
+                        <label htmlFor="Line1Qty" className="sr-only">
                           Quantity
                         </label>
 
