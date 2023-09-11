@@ -14,9 +14,7 @@ const page = () => {
     if (cart.length > 0) {
       Promise.all(
         cart.map((id: string) => {
-          return Helpers.fetchData(
-            `/api/items/find/${id}`
-          );
+          return Helpers.fetchData(`/api/items/find/${id}`);
         })
       ).then((res: any) => setProducts(res));
     }

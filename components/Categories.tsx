@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/all";
 import { allData } from "@/allData";
 import axios from "axios";
 import { Helpers } from "@/helpers/data";
+import CardSkeleton from "./CardSkeleton";
 
 const Categories = () => {
   const ref = useRef(null);
@@ -18,7 +19,7 @@ const Categories = () => {
   const [loading, setLoading] = useState(false);
 
   //gsap
-  useLayoutEffect(() => {
+  /*   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         "#group div",
@@ -45,33 +46,17 @@ const Categories = () => {
     });
 
     return () => ctx.revert();
-  });
+  }); */
 
   useEffect(() => {
     const allData = async () => {
       setLoading(true);
-      const data = await Helpers.fetchData(
-        "/api/items/find"
-      );
+      const data = await Helpers.fetchData("/api/items/find");
       setProducts(data);
       setLoading(false);
     };
     allData();
   }, []);
-
-  /*   useEffect(() => {
-    setLoading(true);
-    axios(`/api/items/find`)
-      .then((res: any) => {
-        setProducts(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []); */
-
-  useEffect(() => {});
 
   return (
     <div
@@ -87,7 +72,10 @@ const Categories = () => {
           nesciunt quibusdam?
         </p>
       </div>
-      <div id={"group"} className="  grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div
+        id={"group"}
+        className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4"
+      >
         {products &&
           products.data.map((e: any, i: any) => (
             <div key={i} id="card">
@@ -95,6 +83,15 @@ const Categories = () => {
             </div>
           ))}
       </div>
+
+      {!products && (
+        <div className="w-full grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+        </div>
+      )}
     </div>
   );
 };
