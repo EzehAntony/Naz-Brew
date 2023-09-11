@@ -15,7 +15,7 @@ const page = () => {
       Promise.all(
         cart.map((id: string) => {
           return Helpers.fetchData(
-            `http://localhost:3000/api/items/find/${id}`
+            `/api/items/find/${id}`
           );
         })
       ).then((res: any) => setProducts(res));
