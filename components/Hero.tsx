@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div className="h-[400px] px-5 lg:px-60 lg:h-screen bg-black w-full flex flex-col justify-center items-center pt-[100px]">
       <div className="relative flex justify-center items-center">
-        <img src="/cup.png" className="w-2/6 mt-10 " alt="" />
+        <img src="/cup.png" className="w-2/6 mt-16  " alt="" />
         <i className="w-[100px] absolute"></i>
       </div>
       <div className="gap-y-4 flex flex-col w-full lg:gap-y-6 justify-center items-center">
