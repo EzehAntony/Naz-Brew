@@ -12,9 +12,9 @@ const Card = ({ data }: { data: any }) => {
   const router = useRouter();
   const addToCart = () => {
     if (cart.length >= 10) {
-      decrement(data._id);
+      decrement(data);
     } else {
-      increment(data._id);
+      increment(data);
     }
   };
 
