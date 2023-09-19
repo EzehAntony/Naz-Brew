@@ -49,7 +49,7 @@ const page = ({
     (async () => {
       setLoading(true);
       const productData = await Helpers.fetchData(
-        `http://localhost:3000/api/items/find/${params.id}`
+        `/api/items/find/${params.id}`
       );
       if (productData.data) {
         setProduct(productData.data);
@@ -60,17 +60,6 @@ const page = ({
     })();
   }, []);
 
-  /*   useEffect(() => {
-    setLoading(true);
-    axios(`/api/items/find/${params.id}`)
-      .then((res: any) => {
-        setProduct(res.data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []); */
   return (
     <section className="w-full text-gray-600 dark:text-white dark:bg-[#000] body-font overflow-hidden">
       <Header />
