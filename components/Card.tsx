@@ -15,6 +15,7 @@ const Card = ({ data }: { data: any }) => {
       decrement(data);
     } else {
       increment(data);
+      console.log(data);
     }
   };
 

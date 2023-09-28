@@ -31,9 +31,12 @@ const page = ({
   ];
 
   const number = Math.floor(Math.random() * img.length);
-
-  const addToCartFunc = (p: String) => {
-    addToCart(p);
+  const addToCartFunc = () => {
+    if (cart.length < 10) {
+      addToCart(product);
+    } else {
+      removeFromCart(product);
+    }
   };
 
   const removeFromCartFunc = (p: String) => {
@@ -51,7 +54,7 @@ const page = ({
       const productData = await Helpers.fetchData(
         `/api/items/find/${params.id}`
       );
-      if (productData.data) {
+      if (productData?.data) {
         setProduct(productData.data);
       } else {
         setProduct(productData);
@@ -111,7 +114,7 @@ const page = ({
                 )}
               </div>
               <button
-                onClick={() => addToCartFunc(params.id)}
+                onClick={() => addToCartFunc()}
                 className="flex justify-center items-center text-white bg-secondary  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded"
               >
                 Add to cart
