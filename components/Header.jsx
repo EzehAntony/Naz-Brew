@@ -24,8 +24,11 @@ const Header = () => {
   };
 
   return (
-    <header className="header bg-black w-full fixed z-20" ref={ref}>
-      <div className="mx-5 flex h-16 max-w-screen-xl justify-between items-center gap-8 px-4 sm:px-6 lg:px-8">
+    <header
+      className="header  bg-black w-full fixed top-0 left-0 z-20"
+      ref={ref}
+    >
+      <div className="flex h-16 max-w-screen-xl justify-between items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Logo styles="" />
 
         <div className="flex cursor-pointer space-x-8 ">

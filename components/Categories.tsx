@@ -62,19 +62,19 @@ const Categories = () => {
     <div
       ref={ref}
       id="top"
-      className="bg-black  pt-10 py-4 lg:px-40 px-6 overflow-hidden"
+      className="bg-black  pt-20 py-4  lg:px-40 px-6 overflow-hidden"
     >
-      <div className="  my-8  gap-y-4">
+      <div className="  my-8  space-y-4 ">
         <h1 className="text-3xl font-bold text-secondary">Items</h1>
         <p className="text-[white] lg:max-w-[700px] ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-          suscipit beatae? Enim modi omnis adipisci officia perspiciatis est
-          nesciunt quibusdam?
+          Experience Nazbrew's hand-crafted coffee, aromatic teas, and
+          daily-baked pastries. Our menu caters to all, with vegan and
+          gluten-free options, plus seasonal specialties to enjoy.
         </p>
       </div>
       <div
         id={"group"}
-        className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4"
+        className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3  gap-4 place-items-center justify-center items-center"
       >
         {products &&
           products.data.map((e: any, i: any) => (
@@ -85,7 +85,7 @@ const Categories = () => {
       </div>
 
       {!products && (
-        <div className="w-full grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4">
+        <div className="w-full grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4 justify-center items-center  ">
           <CardSkeleton />
           <CardSkeleton />
           <CardSkeleton />
