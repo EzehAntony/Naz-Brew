@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Hero = () => {
+  const router = useRouter();
   return (
     <div className="min-h-[400px] px-5 lg:px-60 lg:h-screen bg-black w-full flex flex-col justify-center items-center  relative">
       <div className="relative flex justify-center items-center pt-[100px]">
@@ -17,7 +20,10 @@ const Hero = () => {
           pastries, and a cozy vibe. Enjoy a welcoming space with local art,
           live music, and a friendly community atmosphere.
         </p>
-        <button className="bg-secondary lg:w-[400px] rounded-md text-white flex justify-center items-center gap-x-4 w-full h-[50px]  text-2xl">
+        <button
+          onClick={() => router.push("/home/items")}
+          className="bg-secondary lg:w-[400px] rounded-md text-white flex justify-center items-center gap-x-4 w-full h-[50px]  text-2xl"
+        >
           <i className="bi bi-cart"></i>
           <p className="text-xl">Buy</p>
         </button>

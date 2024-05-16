@@ -1,8 +1,6 @@
 "use client";
 
 import CartItem from "@/components/CartItem";
-import Logo from "@/components/Logo";
-import { Helpers } from "@/helpers/data";
 import { cartStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
@@ -12,7 +10,10 @@ const page = () => {
   const cart = cartStore((state) => state.cart);
   const totalFunc = cartStore((state) => state.totalAmount);
   const total = cartStore((state) => state.total);
-  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    console.log(cart);
+  }, []);
 
   useEffect(() => {
     totalFunc();
@@ -44,7 +45,7 @@ const page = () => {
       <div className="container mx-auto px-4">
         <h1 className="text-xl font-semibold mb-4">Shopping Cart</h1>
         <div className="flex flex-col md:flex-row gap-4">
-          {cart && cart.map((e) => <CartItem data={e} key={e._id} />)}
+          {cart && cart.map((e, i) => <CartItem data={e} key={i} />)}
 
           <div className="md:w-1/4">
             <div className="bg-[#101010] rounded-lg shadow-md p-6">

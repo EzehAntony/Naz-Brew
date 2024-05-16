@@ -1,11 +1,15 @@
+import { cartStore } from "@/store/store";
 import React from "react";
 
 const CartItem = (data: any) => {
+  console.log(data);
+  const increment = cartStore((state) => state.incrementCart);
+  const decrement = cartStore((state) => state.decrementCart);
   return (
     <div className="md:w-3/4">
       <div className="bg-[#101010] text-white rounded-lg shadow-md p-4 mb-4">
         <table className="w-full">
-          <p className="font-semibold py-2">{data.data.title}</p>
+          <p className="font-semibold py-2">{data.data.item.title}</p>
           <div className="w-full flex justify-between items-center">
             <img
               className="h-28 w-28 mr-4 rounded"
@@ -14,10 +18,13 @@ const CartItem = (data: any) => {
             />
 
             <div className="flex flex-col justify-center items-center ">
-              <button className="bg-secondary px-3 py-2 rounded ">
+              <button
+                onClick={() => increment(data.data.item._id)}
+                className="bg-secondary px-3 py-2 rounded "
+              >
                 <i className="bi bi-arrow-up-short"></i>
               </button>
-              <p className="py-4">1</p>
+              <p className="py-4">{data.data.quantity}</p>
               <button className=" px-3 py-2 bg-secondary rounded">
                 <i className="bi bi-arrow-down-short"></i>
               </button>
@@ -26,7 +33,7 @@ const CartItem = (data: any) => {
         </table>
         <h3 className="font-semibold text-xl flex justify-start items-center ">
           <span className="text-secondary mr-2 text-2xl">₦</span>
-          {data.data.price}
+          {data.data.item.price}
         </h3>
       </div>
     </div>

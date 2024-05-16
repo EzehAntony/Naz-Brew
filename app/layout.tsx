@@ -1,8 +1,10 @@
+import Header from "@/components/Header";
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import type { Metadata } from "next";
 import { Poiret_One } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "@/components/Footer";
 
 const poiret = Poiret_One({ weight: "400", subsets: ["latin"] });
 
@@ -19,7 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poiret.className}>{children}</body>
+      <body className={poiret.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
