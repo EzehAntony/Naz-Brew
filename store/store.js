@@ -34,18 +34,25 @@ export const cartStore = create((set, get) => ({
     } else {
     }
   },
+ 
+
   decrementCart: (action) => {
     const cart = get().cart;
-    if (cart.length >= 10) {
+    const index = cart.findIndex((cartItem) => cartItem.item._id === action);
+
+    if (index !== -1) {
+      set((state) => ({
+        cart: [
+          {
+            item: state.cart[index].item,
+            quantity: state.cart[index].quantity + 1,
+          },
+        ],
+      }));
     } else {
-      if (cart.some((data) => data._id == action._id)) {
-      } else {
-        set((state) => ({
-          cart: [...state.cart, { item: action.item, quantity: 0 }],
-        }));
-      }
     }
   },
+ 
   removeFromCart: (action) => {
     set((state) => ({
       cart: state.cart.filter((data) => data._id !== action._id),
