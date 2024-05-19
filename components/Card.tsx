@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/all";
 import { cartStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 const Card = ({ data }: { data: any }) => {
-  const cart = cartStore((state) => state.cart);
-  const increment = cartStore((state) => state.addToCart);
-  const decrement = cartStore((state) => state.removeFromCart);
+  const cart = cartStore((state: any) => state.cart);
+  const increment = cartStore((state: any) => state.addToCart);
+  const decrement = cartStore((state: any) => state.removeFromCart);
   const router = useRouter();
   const addToCart = () => {
     if (cart.length >= 10) {
