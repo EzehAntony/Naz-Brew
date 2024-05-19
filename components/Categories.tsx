@@ -52,6 +52,7 @@ const Categories = () => {
     const allData = async () => {
       setLoading(true);
       const data = await Helpers.fetchData("/api/items/find");
+      console.log(data);
       setProducts(data);
       setLoading(false);
     };

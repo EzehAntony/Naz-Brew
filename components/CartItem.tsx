@@ -1,10 +1,11 @@
 import { cartStore } from "@/store/store";
 import React from "react";
+import useStore from "../store/useStore";
 
 const CartItem = (data: any) => {
-  console.log(data);
-  const increment = cartStore((state) => state.incrementCart);
-  const decrement = cartStore((state) => state.decrementCart);
+  const incrementCart = cartStore((state: any) => state.incrementCart);
+  const decrementCart = cartStore((state: any) => state.decrementCart);
+
   return (
     <div className="md:w-3/4">
       <div className="bg-[#101010] text-white rounded-lg shadow-md p-4 mb-4">
@@ -19,13 +20,16 @@ const CartItem = (data: any) => {
 
             <div className="flex flex-col justify-center items-center ">
               <button
-                onClick={() => increment(data.data.item._id)}
+                onClick={() => incrementCart(data.data.item._id)}
                 className="bg-secondary px-3 py-2 rounded "
               >
                 <i className="bi bi-arrow-up-short"></i>
               </button>
               <p className="py-4">{data.data.quantity}</p>
-              <button className=" px-3 py-2 bg-secondary rounded">
+              <button
+                onClick={() => decrementCart(data.data.item._id)}
+                className=" px-3 py-2 bg-secondary rounded"
+              >
                 <i className="bi bi-arrow-down-short"></i>
               </button>
             </div>

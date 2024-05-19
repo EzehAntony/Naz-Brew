@@ -1,21 +1,25 @@
-import axios from "axios";
-import { cache } from "react";
+import { cache } from "react"; // Remove this line if you are not using cache from React
 
 export class Helpers {
-  static fetchData = cache(async (url: string) => {
-    return axios({
-      method: "GET",
-      url: url,
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        return res.data;
-      })
-      .catch(() => {
-        return undefined;
+  static fetchData = async (url: string) => {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "only-if-cached",
       });
-  });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Fetch error:", error);
+      return undefined;
+    }
+  };
 }

@@ -5,9 +5,10 @@ import Logo from "@/components/Logo";
 import { gsap } from "gsap";
 import { cartStore } from "@/store/store";
 import { useRouter } from "next/navigation";
+import { useStore } from "zustand";
 
 const Header = () => {
-  const cartCount = cartStore((state) => state.cart);
+  const cartCount = useStore(cartStore, (state) => state.cart);
   const ref = useRef(null);
   const g = gsap.utils.selector(ref);
   const [open, setOpen] = useState(true);

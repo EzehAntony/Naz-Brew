@@ -5,19 +5,16 @@ import { cartStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
 import { ToastContainer, toast } from "react-toastify";
+import { useStore } from "../../store/useStore";
 
 const page = () => {
   const cart = cartStore((state) => state.cart);
-  const totalFunc = cartStore((state) => state.totalAmount);
   const total = cartStore((state) => state.total);
+  const totalFunc = cartStore((state) => state.totalCart);
 
   useEffect(() => {
-    console.log(cart);
-  }, []);
-
-  useEffect(() => {
-    totalFunc();
-  }, [total]);
+    console.log(totalFunc());
+  }, [cart]);
 
   const config = {
     reference: Math.floor(Math.random() * 1000000000 + 1),
@@ -41,7 +38,7 @@ const page = () => {
   };
 
   return (
-    <div className="bg-[#000] h-screen py-8 ">
+    <div className="bg-[#000] min-h-screen py-8 ">
       <div className="container mx-auto px-4">
         <h1 className="text-xl font-semibold mb-4">Shopping Cart</h1>
         <div className="flex flex-col md:flex-row gap-4">
@@ -57,7 +54,7 @@ const page = () => {
               </div>
               <div className="flex justify-between mb-2">
                 <span className="font-semibold">shipping</span>
-                <span className="font-semibold">25</span>
+                <span className="font-semibold">1000</span>
               </div>
 
               <hr className="my-2 border-[#714131]" />

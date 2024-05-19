@@ -6,6 +6,7 @@ import DescriptionSkeleton from "@/components/DescriptionSkeleton";
 import { cartStore } from "@/store/store";
 import { Helpers } from "@/helpers/data";
 import Image from "next/legacy/image";
+import useStore from "@/store/useStore";
 const page = ({
   params,
 }: {
@@ -19,26 +20,16 @@ const page = ({
 }) => {
   const [product, setProduct] = useState<any>();
   const [loading, setLoading] = useState(false);
-  const cart = cartStore((state) => state.cart);
-  const addToCart = cartStore((state) => state.addToCart);
-  const removeFromCart = cartStore((state) => state.removeFromCart);
+  const cart = useStore(cartStore, (state: any) => state.cart);
+  const addToCart = cartStore((state: any) => state.addToCart);
+  const removeFromCart = cartStore((state: any) => state.removeFromCart);
 
   const addToCartFunc = () => {
-    if (cart.length < 10) {
-      console.log(product);
-      addToCart({ item: product, quantity: 1 });
-    } else {
-      removeFromCart(product);
-    }
+    addToCart(product);
   };
 
   const removeFromCartFunc = () => {
-    cart.map((d: any) => {
-      if (d._id == params.id) {
-        removeFromCart(d);
-      } else {
-      }
-    });
+    removeFromCart(product);
   };
 
   useEffect(() => {
@@ -62,15 +53,15 @@ const page = ({
         <div className="w-full mx-auto flex flex-col lg:flex-row ">
           <div className="w-full">
             {product && (
-              <div className=" dark:bg-[#262A2E] w-full h-[400px] lg:h-[500px] flex justify-center items-center object-cover object-center rounded relative">
+              <div className=" dark:bg-[#262A2E] w-full h-[400px] lg:h-[500px] flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
                 <Image
                   src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX16DNQoHtFIwkIP7CT6UTUVdO5RlGIY9-1Q&s"
+                    "https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=600"
                   }
                   priority
                   alt="cup"
                   layout="fill"
-                  className="rounded-b-lg"
+                  className="rounded-lg"
                   objectFit="cover"
                 />
               </div>
