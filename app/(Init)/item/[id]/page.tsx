@@ -112,7 +112,7 @@ const page = ({
                 </button>
                 <button
                   onClick={() => removeFromCartFunc()}
-                  className="flex w-full justify-center items-center  bg-white text-black  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded"
+                  className="flex w-full justify-center items-center text-white bg-[red] black  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded"
                 >
                   Remove from cart
                 </button>
