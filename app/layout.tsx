@@ -24,9 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poiret.className}>
         <Hydration>
-          <Header />
           {children}
-          <Footer />
         </Hydration>
       </body>
     </html>
