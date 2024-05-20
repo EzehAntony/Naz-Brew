@@ -21,6 +21,7 @@ const page = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    console.log(name, value);
   };
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const page = () => {
     email: form.email,
     amount: `${total + 1000}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
+    currency: "NGN",
     channels: ["card", "bank", "ussd", "qr", "mobile_money", "bank_transfer"],
     metadata: {
       custom_fields: [
