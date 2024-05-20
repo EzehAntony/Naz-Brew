@@ -53,7 +53,7 @@ const page = ({
         <div className="w-full mx-auto flex flex-col lg:flex-row ">
           <div className="w-full">
             {product && (
-              <div className=" dark:bg-[#262A2E] w-full h-[400px] lg:h-[500px] flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
+              <div className=" bg-[#262A2E] w-full h-[400px] lg:h-[500px] flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
                 <Image
                   src={
                     "https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -76,7 +76,7 @@ const page = ({
               <Logo styles={"w-[0px] "} />
             </h2>
             {product && (
-              <h1 className="text-gray-900 dark:text-white text-3xl title-font font-medium my-4">
+              <h1 className="text-gray-900 text-white text-3xl title-font font-medium my-4">
                 {product.title}
               </h1>
             )}
@@ -96,7 +96,7 @@ const page = ({
 
             <div className=" w-full flex flex-col justify-between mt-8 space-y-4">
               <div>
-                <span className="title-font font-medium text-2xl dark:text-white text-gray-900">
+                <span className="title-font font-medium text-2xl text-white text-gray-900">
                   {product && `₦ ${product.price}`}
                 </span>
                 {!product && (
