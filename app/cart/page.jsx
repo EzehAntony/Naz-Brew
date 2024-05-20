@@ -3,7 +3,7 @@
 import CartItem from "@/components/CartItem";
 import { cartStore } from "@/store/store";
 import { useEffect, useState } from "react";
-import { PaystackButton } from "react-paystack";
+import { PaystackButton, usePaystackPayment } from "react-paystack";
 import { ToastContainer, toast } from "react-toastify";
 import { useStore } from "../../store/useStore";
 
@@ -11,32 +11,63 @@ const page = () => {
   const cart = cartStore((state) => state.cart);
   const total = cartStore((state) => state.total);
   const totalFunc = cartStore((state) => state.totalCart);
+  const [form, setForm] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   useEffect(() => {
     console.log(totalFunc());
   }, [cart]);
 
   const config = {
-    reference: Math.floor(Math.random() * 1000000000 + 1),
-    currency: "NGN",
-    email: "crayonno.o@example.com",
+    ref: Math.floor(Math.random() * 1000000000 + 1),
+    email: form.email,
     amount: `${total + 1000}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
-    bearer: "subaccount",
+    channels: ["card", "bank", "ussd", "qr", "mobile_money", "bank_transfer"],
+    metadata: {
+      custom_fields: [
+        {
+          display_name: "firstname",
+          variable_name: "firstname",
+          value: form.firstname,
+        },
+        {
+          display_name: "lastname",
+          variable_name: "lastname",
+          value: form.lastname,
+        },
+        {
+          display_name: "address",
+          variable_name: "address",
+          value: form.lastname,
+        },
+      ],
+    },
   };
 
   // you can call this function anything
-  const handlePaystackCloseAction = () => {
-    toast("Closed Transaction");
+  const onSuccess = () => {
+    toast("Successfull Transaction");
+  };
+  // you can call this function anything
+  const onClose = () => {
+    toast.error("Closed Transaction");
   };
 
-  const componentProps = {
-    ...config,
-    text: "Checkout",
-    onSuccess: (reference) => console.log(reference),
-    onClose: handlePaystackCloseAction,
-  };
+  const payWithPaystack = usePaystackPayment(config);
 
+  const pay = () => {
+    payWithPaystack(onSuccess, onClose);
+  };
   return (
     <div className="bg-[#000] text-white min-h-screen py-8 ">
       <div className="container mx-auto px-4">
@@ -77,32 +108,53 @@ const page = () => {
             <input
               className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="email"
+              onChange={handleChange}
+              name="email"
               id="email-address"
               required
+              placeholder="example@gmail.com"
             />
           </div>
 
           <div className="form-group flex flex-col space-y-2 my-2">
-            <label className="font-bold ">First Name</label>
+            <label className="font-bold ">Firstname</label>
             <input
+              onChange={handleChange}
               className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="text"
+              name="firstname"
               id="first-name"
+              placeholder="Anthony"
             />
           </div>
           <div className="form-group flex flex-col space-y-2 my-2">
-            <label className="font-bold ">Last Name</label>
+            <label className="font-bold ">Lastname</label>
+            <input
+              className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
+              onChange={handleChange}
+              type="text"
+              name="lastname"
+              id="last-name"
+              placeholder="Ezeh"
+            />
+          </div>
+          <div className="form-group flex flex-col space-y-2 my-2">
+            <label className="font-bold ">Mailing address</label>
             <input
               className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="text"
               id="last-name"
+              onChange={handleChange}
+              name="address"
+              placeholder="2 aladelola street ikosi ketu lagos nigeria"
             />
           </div>
-          <div className="form-submit"></div>
-          <PaystackButton
-            {...componentProps}
-            className="bg-secondary text-white py-2 px-4 rounded-lg mt-4 w-full"
-          />
+          <button
+            onClick={() => pay()}
+            className="bg)-secondary text-white py-2 px-4 rounded-lg mt-4 w-full"
+          >
+            Pay
+          </button>
         </form>
       </div>
 
