@@ -9,9 +9,10 @@ export const cartStore = create(
 
       addToCart: (data: any) => {
         const oldCart = get().cart;
-        const isInCart = oldCart.find(
-          (cartItem: any) => cartItem.item._id === data._id
-        );
+        const isInCart = oldCart.find((item: any) => {
+          console.log(item);
+          return item.item._id === data._id;
+        });
 
         if (isInCart) {
           return; // Item already in cart, no action needed
@@ -31,7 +32,7 @@ export const cartStore = create(
       incrementCart: (data: any) => {
         const cart = get().cart;
         const indexOfItem = cart.findIndex(
-          (cartItem: any) => cartItem.item._id === data._id
+          (cartItem: any) => cartItem.item._id === data
         );
 
         if (indexOfItem !== -1) {
@@ -55,7 +56,7 @@ export const cartStore = create(
       decrementCart: (data: any) => {
         const cart = get().cart;
         const indexOfItem = cart.findIndex(
-          (item: any) => item._id === data._id
+          (item: any) => item.item._id === data
         );
         if (indexOfItem !== -1 && cart[indexOfItem].quantity >= 2) {
           const newCart = cart.map((item: any, index: number) => {

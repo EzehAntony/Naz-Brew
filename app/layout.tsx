@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Poiret_One } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/components/Footer";
+import Hydration from "../components/Hydration";
 
 const poiret = Poiret_One({ weight: "400", subsets: ["latin"] });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poiret.className}>
-        <Header />
-        {children}
-        <Footer />
+        <Hydration>
+          <Header />
+          {children}
+          <Footer />
+        </Hydration>
       </body>
     </html>
   );

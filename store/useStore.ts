@@ -1,3 +1,4 @@
+// useStore.ts
 import { useState, useEffect } from "react";
 
 const useStore = <T, F>(
@@ -6,6 +7,7 @@ const useStore = <T, F>(
 ) => {
   const result = store(callback) as F;
   const [data, setData] = useState<F>();
+
   useEffect(() => {
     setData(result);
   }, [result]);

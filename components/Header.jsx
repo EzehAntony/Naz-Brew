@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useStore } from "zustand";
 
 const Header = () => {
-  const cartCount = useStore(cartStore, (state) => state.cart);
+  const cartCount = cartStore((state) => state.cart);
   const ref = useRef(null);
   const g = gsap.utils.selector(ref);
   const [open, setOpen] = useState(true);

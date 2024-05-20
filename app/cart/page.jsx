@@ -20,7 +20,7 @@ const page = () => {
     reference: Math.floor(Math.random() * 1000000000 + 1),
     currency: "NGN",
     email: "crayonno.o@example.com",
-    amount: `${total}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    amount: `${total + 1000}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
     bearer: "subaccount",
   };
@@ -38,7 +38,7 @@ const page = () => {
   };
 
   return (
-    <div className="bg-[#000] min-h-screen py-8 ">
+    <div className="bg-[#000] text-white min-h-screen py-8 ">
       <div className="container mx-auto px-4">
         <h1 className="text-xl font-semibold mb-4">Shopping Cart</h1>
         <div className="flex flex-col md:flex-row gap-4">
@@ -75,25 +75,17 @@ const page = () => {
           <div className="form-group flex flex-col space-y-2 my-2">
             <label className="font-bold ">Email Address</label>
             <input
-              className=" text-white h-[40px] bg-[#75757521] rounded-sm "
+              className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="email"
               id="email-address"
               required
             />
           </div>
-          <div className="form-group flex flex-col space-y-2 my-2">
-            <label className="font-bold ">Amount</label>
-            <input
-              className=" text-white h-[40px] bg-[#75757521] rounded-sm "
-              type="tel"
-              id="amount"
-              required
-            />
-          </div>
+
           <div className="form-group flex flex-col space-y-2 my-2">
             <label className="font-bold ">First Name</label>
             <input
-              className=" text-white h-[40px] bg-[#75757521] rounded-sm "
+              className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="text"
               id="first-name"
             />
@@ -101,7 +93,7 @@ const page = () => {
           <div className="form-group flex flex-col space-y-2 my-2">
             <label className="font-bold ">Last Name</label>
             <input
-              className=" text-white h-[40px] bg-[#75757521] rounded-sm "
+              className=" text-white h-[40px] px-4 bg-[#75757521] rounded-sm "
               type="text"
               id="last-name"
             />

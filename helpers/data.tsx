@@ -8,7 +8,7 @@ export class Helpers {
         headers: {
           "Content-Type": "application/json",
         },
-        cache: "only-if-cached",
+        cache: "default",
       });
 
       if (!response.ok) {
