@@ -31,7 +31,7 @@ const page = () => {
   const config = {
     ref: Math.floor(Math.random() * 1000000000 + 1),
     email: form.email,
-    amount: `${total}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    amount: `${total + 1000}00`, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
     currency: "NGN",
     channels: ["card", "bank", "ussd", "qr", "mobile_money", "bank_transfer"],
@@ -93,7 +93,7 @@ const page = () => {
               <hr className="my-2 border-[#714131]" />
               <div className="flex justify-between mb-2">
                 <span className="font-semibold">Total</span>
-                <span className="font-semibold">₦ {total}</span>
+                <span className="font-semibold">₦ {total  + 1000}</span>
               </div>
               {/*               <button className="bg-secondary text-white py-2 px-4 rounded-lg mt-4 w-full">
                 Checkout
@@ -152,7 +152,7 @@ const page = () => {
             />
           </div>
           <button
-          type="button"
+            type="button"
             onClick={() => pay()}
             className="bg-secondary text-white py-2 px-4 rounded-lg mt-4 w-full"
           >

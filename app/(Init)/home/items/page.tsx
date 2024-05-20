@@ -20,7 +20,7 @@ const page = (): ReactElement => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex flex-col  items-center pt-[80px] px-4 py-10 relative dark:text-white dark:bg-[#000]">
+    <div className="w-full min-h-screen flex flex-col  items-center pt-[80px] px-4 py-10 relative text-white bg-[#000]">
       <Header />
       <div className=" w-full lg:max-w-[920px]   my-8  space-y-4 ">
         <h1 className="text-3xl font-bold text-secondary">Items</h1>

@@ -4,16 +4,22 @@ import useStore from "../store/useStore";
 import { useRouter } from "next/navigation";
 
 const CartItem = (data: any) => {
-  console.log(data)
+  console.log(data);
   const incrementCart = cartStore((state: any) => state.incrementCart);
   const decrementCart = cartStore((state: any) => state.decrementCart);
   const router = useRouter();
 
   return (
-    <div className="md:w-3/4" onClick={() => router.push(`/item/${data.data.item._id}`)}>
+    <div className="md:w-3/4">
       <div className="bg-[#101010] text-white rounded-lg shadow-md p-4 mb-4">
         <table className="w-full">
-          <p className="font-semibold py-2">{data.data.item.title}</p>
+          <p className="font-semibold py-2 text-2xl">{data.data.item.title}</p>
+          <p
+            className="text-secondary text-xl font-semibold py-2"
+            onClick={() => router.push(`/item/${data.data.item._id}`)}
+          >
+            view Item{" "}
+          </p>
           <div className="w-full flex justify-between items-center">
             <img
               className="h-28 w-28 mr-4 rounded"

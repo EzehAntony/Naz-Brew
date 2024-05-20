@@ -6,7 +6,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-full overflow-x-hidden dark:text-white dark:bg-[#000] ">
+    <div className="w-full overflow-x-hidden text-white bg-[#000] ">
       <Hero />
       <Categories />
     </div>
