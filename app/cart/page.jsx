@@ -151,7 +151,7 @@ const page = () => {
           </div>
           <button
             onClick={() => pay()}
-            className="bg)-secondary text-white py-2 px-4 rounded-lg mt-4 w-full"
+            className="bg-secondary text-white py-2 px-4 rounded-lg mt-4 w-full"
           >
             Pay
           </button>

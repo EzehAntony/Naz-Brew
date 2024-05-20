@@ -48,7 +48,7 @@ const page = ({
   }, []);
 
   return (
-    <section className="w-full min-h-screen text-gray-600 dark:text-white dark:bg-[#000] body-font overflow-hidden lg:pt-[80px]">
+    <section className="w-full min-h-screen text-gray-600 text-white bg-[#000] body-font overflow-hidden lg:pt-[80px]">
       <div className="container px-5 py-24 mx-auto w-full">
         <div className="w-full mx-auto flex flex-col lg:flex-row ">
           <div className="w-full">
