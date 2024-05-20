@@ -12,7 +12,6 @@ const poiret = Poiret_One({ weight: "400", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "NazBrew",
   description: "Get a cup of coffee!",
-  themeColor: "#000",
 };
 
 export default function RootLayout({
