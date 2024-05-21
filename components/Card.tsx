@@ -24,10 +24,10 @@ const Card = ({ data }: { data: any }) => {
     <div
       onClick={() => router.push(`/item/${data._id}`)}
       id="card"
-      className="group/card text-black w-full lg:w-[220px] min-h-[225px]   bg-[#3b23144f] rounded-lg overflow-hidden cursor-pointer"
+      className="group/card text-black w-full lg:w-[220px] min-h-[225px] min-w-[150px]  bg-[#3b23144f] rounded-lg overflow-hidden cursor-pointer"
     >
       <div className="w-full ">
-        <div className=" bg-[#262A2E] w-full h-[100px] lg:w-[220px] lg:h-[220px]  flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
+        <div className=" bg-[#262A2E] w-full  h-[100px] lg:w-[220px] lg:h-[220px]  flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
           <Image
             src={data.image}
             priority

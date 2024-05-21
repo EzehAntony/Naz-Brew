@@ -52,7 +52,6 @@ const Categories = () => {
     const allData = async () => {
       setLoading(true);
       const data = await Helpers.fetchData("/api/items/find");
-      console.log(data);
       setProducts(data);
       setLoading(false);
     };
@@ -75,7 +74,7 @@ const Categories = () => {
       </div>
       <div
         id={"group"}
-        className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3  gap-4 place-items-center justify-center items-center"
+        className="w-full grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3  place-items-stretch gap-4 "
       >
         {products &&
           products.data.map((e: any, i: any) => (
