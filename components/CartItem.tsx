@@ -11,9 +11,9 @@ const CartItem = (data: any) => {
   const removeFromCart = cartStore((state: any) => state.removeFromCart);
 
   const removeFromCartFunc = () => {
-    toast("Empty Cart", {
+    toast(`${data.data.item.title} removed`, {
       type: "success",
-      autoClose: 2000,
+      autoClose: 1000,
       theme: "dark",
       onClose: () => removeFromCart(data.data.item),
     });

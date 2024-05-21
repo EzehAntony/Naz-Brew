@@ -27,6 +27,7 @@ const page = () => {
   };
 
   useEffect(() => {
+    totalFunc();
     if (cart.length <= 0) {
       toast("Empty Cart", {
         type: "warning",
