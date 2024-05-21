@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poiret_One } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/components/Footer";
@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description: "Get a cup of coffee!",
 };
 
+export const viewport: Viewport = {
+  themeColor: "black",
+};
 export default function RootLayout({
   children,
 }: {
@@ -22,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poiret.className}>
-        <Hydration>
-          {children}
-        </Hydration>
+        <Hydration>{children}</Hydration>
       </body>
     </html>
   );

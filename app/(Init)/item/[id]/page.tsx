@@ -48,8 +48,8 @@ const page = ({
   }, []);
 
   return (
-    <section className="w-full min-h-screen text-gray-600 text-white bg-[#000] body-font overflow-hidden lg:pt-[80px]">
-      <div className="container px-5 py-24 mx-auto w-full">
+    <section className="w-full min-h-screen text-gray-600 text-white bg-[#000] body-font overflow-hidden lg:pt-[80px] flex flex-col justify-between">
+      <div className="container px-5 pt-[70px]  mx-auto w-full">
         <div className="w-full mx-auto flex flex-col lg:flex-row ">
           <div className="w-full">
             {product && (
@@ -103,24 +103,28 @@ const page = ({
                   <div className="animate-pulse my-4 w-[130px] h-[20px] bg-[#101010] rounded-md "></div>
                 )}
               </div>
-              <div className="space-y-4">
-                <button
-                  onClick={() => addToCartFunc()}
-                  className="flex w-full justify-center items-center text-white bg-secondary  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded"
-                >
-                  Add to cart
-                </button>
-                <button
-                  onClick={() => removeFromCartFunc()}
-                  className="flex w-full justify-center items-center text-white bg-[red] black  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded"
-                >
-                  Remove from cart
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
+      {product && (
+        <div className="space-y-4 p-5 ">
+          <button
+            onClick={() => addToCartFunc()}
+            className="flex w-full justify-center items-center text-white bg-secondary  border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded space-x-2"
+          >
+            <h3>Add to cart</h3>
+            <i className="bi bi-cart-plus-fill text-white "></i>
+          </button>
+          <button
+            onClick={() => removeFromCartFunc()}
+            className="flex w-full justify-center items-center text-white bg-[#2e2e2e] black  border-0 py-2 px-6 focus:outline-none hover:bg-[#8d0000] rounded space-x-2"
+          >
+            <h3>Remove from cart</h3>
+            <i className="bi bi-cart-dash-fill text-white"></i>
+          </button>
+        </div>
+      )}
     </section>
   );
 };

@@ -5,7 +5,7 @@ import { cartStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import { PaystackButton, usePaystackPayment } from "react-paystack";
 import { ToastContainer, toast } from "react-toastify";
-import { useStore } from "../../store/useStore";
+import { useStore } from "../../../store/useStore";
 
 const page = () => {
   const cart = cartStore((state) => state.cart);
@@ -71,7 +71,7 @@ const page = () => {
     payWithPaystack(onSuccess, onClose);
   };
   return (
-    <div className="bg-[#000] text-white min-h-screen py-8 ">
+    <div className="bg-[#000] text-white min-h-screen py-8 pt-[80px] ">
       <div className="container mx-auto px-4">
         <h1 className="text-xl font-semibold mb-4">Shopping Cart</h1>
         <div className="flex flex-col md:flex-row gap-4">

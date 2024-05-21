@@ -48,7 +48,7 @@ const Header = () => {
           ></i>
         </div>
         <nav
-          className={`mobileNav w-[80%] h-screen lg:hidden text-white  absolute top-0  flex justify-center items-center bg-[#120B06] z-10 -right-[80%]`}
+          className={`mobileNav w-[80%] h-screen lg:hidden text-white  absolute top-0  flex justify-center items-center bg-[#120B06] z-50 -right-[80%]`}
         >
           <i
             onClick={openFunc}
@@ -56,9 +56,15 @@ const Header = () => {
           ></i>
 
           <ul className="capitalize w-full ">
-            <li className="px-4 py-4 hover:text-4xl text-2xl">Order</li>
-            <li className="px-4 py-4 hover:text-4xl text-2xl">Contact Us</li>
-            <li className="px-4 py-4 hover:text-4xl text-2xl">about</li>
+            <li
+              className="px-4 py-4 hover:text-4xl text-2xl"
+              onClick={() => {
+                openFunc();
+                router.push("/home/items");
+              }}
+            >
+              Order
+            </li>
           </ul>
 
           <Logo styles="absolute bottom-4" />

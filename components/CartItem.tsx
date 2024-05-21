@@ -14,12 +14,15 @@ const CartItem = (data: any) => {
       <div className="bg-[#101010] text-white rounded-lg shadow-md p-4 mb-4">
         <table className="w-full">
           <p className="font-semibold py-2 text-2xl">{data.data.item.title}</p>
-          <p
-            className="text-secondary text-xl font-semibold py-2"
-            onClick={() => router.push(`/item/${data.data.item._id}`)}
-          >
-            view Item{" "}
-          </p>
+          <div className="w-full  flex justify-between items-center py-4">
+            <p
+              onClick={() => router.push(`/item/${data.data.item._id}`)}
+              className="text-white text-xl font-semibold py-2"
+            >
+              View Item
+            </p>
+            <i className="bi bi-x-lg text-[red]"></i>
+          </div>
           <div className="w-full flex justify-between items-center">
             <img
               className="h-28 w-28 mr-4 rounded"
