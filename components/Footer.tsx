@@ -112,7 +112,6 @@ const Footer = () => {
               </svg>
               <span className="sr-only">GitHub account</span>
             </a>
-         
           </div>
         </div>
       </div>

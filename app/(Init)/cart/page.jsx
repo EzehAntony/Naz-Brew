@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import { PaystackButton, usePaystackPayment } from "react-paystack";
 import { ToastContainer, toast } from "react-toastify";
 import { useStore } from "../../../store/useStore";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const cart = cartStore((state) => state.cart);
   const total = cartStore((state) => state.total);
   const totalFunc = cartStore((state) => state.totalCart);
+  const router = useRouter();
   const [form, setForm] = useState({
     firstname: "",
     lastname: "",
@@ -25,7 +27,14 @@ const page = () => {
   };
 
   useEffect(() => {
-    console.log(totalFunc());
+    if (cart.length <= 0) {
+      toast("Empty Cart", {
+        type: "warning",
+        autoClose: 2000,
+        theme: "dark",
+        onClose: () => router.push("/home/items"),
+      });
+    }
   }, [cart]);
 
   const config = {
@@ -58,11 +67,15 @@ const page = () => {
 
   // you can call this function anything
   const onSuccess = () => {
-    toast("Successfull Transaction");
+    toast("Successfull Transaction", {
+      theme: "dark",
+    });
   };
   // you can call this function anything
   const onClose = () => {
-    toast.error("Closed Transaction");
+    toast.error("Closed Transaction", {
+      theme: "dark",
+    });
   };
 
   const payWithPaystack = usePaystackPayment(config);
@@ -93,7 +106,7 @@ const page = () => {
               <hr className="my-2 border-[#714131]" />
               <div className="flex justify-between mb-2">
                 <span className="font-semibold">Total</span>
-                <span className="font-semibold">₦ {total  + 1000}</span>
+                <span className="font-semibold">₦ {total + 1000}</span>
               </div>
               {/*               <button className="bg-secondary text-white py-2 px-4 rounded-lg mt-4 w-full">
                 Checkout

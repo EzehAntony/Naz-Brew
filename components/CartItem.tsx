@@ -1,13 +1,23 @@
 import { cartStore } from "@/store/store";
-import React from "react";
+import React, { useEffect } from "react";
 import useStore from "../store/useStore";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const CartItem = (data: any) => {
-  console.log(data);
   const incrementCart = cartStore((state: any) => state.incrementCart);
   const decrementCart = cartStore((state: any) => state.decrementCart);
   const router = useRouter();
+  const removeFromCart = cartStore((state: any) => state.removeFromCart);
+
+  const removeFromCartFunc = () => {
+    toast("Empty Cart", {
+      type: "success",
+      autoClose: 2000,
+      theme: "dark",
+      onClose: () => removeFromCart(data.data.item),
+    });
+  };
 
   return (
     <div className="md:w-3/4">
@@ -21,7 +31,10 @@ const CartItem = (data: any) => {
             >
               View Item
             </p>
-            <i className="bi bi-x-lg text-[red]"></i>
+            <i
+              className="bi bi-x-lg text-[red]"
+              onClick={removeFromCartFunc}
+            ></i>
           </div>
           <div className="w-full flex justify-between items-center">
             <img

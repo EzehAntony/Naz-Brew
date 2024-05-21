@@ -94,7 +94,7 @@ const page = ({
               {!product && <DescriptionSkeleton />}
             </div>
 
-            <div className=" w-full flex flex-col justify-between mt-8 space-y-4">
+            <div className=" w-full flex flex-col justify-between mt-8 space-y-2">
               <div>
                 <span className="title-font font-medium text-2xl text-white text-gray-900">
                   {product && `₦ ${product.price}`}
