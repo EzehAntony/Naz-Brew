@@ -55,9 +55,7 @@ const page = ({
             {product && (
               <div className=" bg-[#262A2E] w-full h-[400px] lg:h-[500px] flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
                 <Image
-                  src={
-                    "https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  }
+                  src={product.image}
                   priority
                   alt="cup"
                   layout="fill"
