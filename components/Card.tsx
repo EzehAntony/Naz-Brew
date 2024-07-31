@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 import { cartStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import Image from "next/legacy/image";
+import Logo from "./Logo";
 const Card = ({ data }: { data: any }) => {
   const cart = cartStore((state: any) => state.cart);
   const increment = cartStore((state: any) => state.addToCart);
@@ -22,40 +23,29 @@ const Card = ({ data }: { data: any }) => {
 
   return (
     <div
-      onClick={() => router.push(`/item/${data._id}`)}
       id="card"
-      className="group/card text-black w-full lg:w-[220px] min-h-[225px] min-w-[150px]  bg-[#3b23144f] rounded-lg overflow-hidden cursor-pointer"
+      className=" text-black w-full flex flex-col justify-center items-center bg-[#3b23144f] rounded-lg overflow-hidden cursor-pointer"
     >
-      <div className="w-full ">
-        <div className=" bg-[#262A2E] w-full  h-[150px] lg:w-[220px] lg:h-[220px]  flex justify-center items-center object-cover object-center rounded-lg overflow-hidden relative">
-          <Image
-            src={data.image}
-            priority
-            alt="cup"
-            layout="fill"
-            className="rounded-lg"
-            objectFit="cover"
-          />
-        </div>
+      <div
+        onClick={() => router.push(`/item/${data._id}`)}
+        className="relative min-h-[150px] w-full  lg:w-[250px] lg:h-[200px] min-w-[150px] "
+      >
+        <Image
+          src={data.image}
+          layout="fill"
+          objectFit="cover"
+          alt={data.title}
+        />
       </div>
-      <div className="p-2">
-        <div>
-          <h5 className="my-4 group-hover/card:animate-pulse text-2xl font-bold tracking-tight text-gray-900 text-white">
-            {data.title}
-          </h5>
-        </div>
-
-        <div
-          onClick={addToCart}
-          className=" w-full inline-flex text-white justify-center gap-x-4 items-center px-3 py-2  bg-secondary rounded-lg focus:outline-none "
-        >
-          <h2 className="font-bold text-xl">Brew</h2>
-          <div className="relative flex justify-center items-center">
-            <i className="bi bi-cup-hot-fill text-xl"></i>
-            <i className="bi bi-cup-hot-fill text-xl absolute group-hover/card:animate-ping"></i>
-          </div>
-        </div>
-      </div>
+      <h3 className="text-white w-full text-start text-2xl my-2 px-2">
+        {data.title}
+      </h3>
+      <button
+        onClick={addToCart}
+        className="bg-white w-3/4 mx-auto my-4 rounded-lg h-[40px] text-2xl font-bold "
+      >
+        Brew
+      </button>
     </div>
   );
 };

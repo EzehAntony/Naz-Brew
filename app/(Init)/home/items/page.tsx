@@ -32,13 +32,11 @@ const page = (): ReactElement => {
       </div>
       <div
         id={"group"}
-        className="grid grid-cols-2 px-4 lg:grid-cols-4 md:grid-cols-3  gap-4 place-items-center justify-center items-center"
+        className="w-full grid grid-cols-2 max-w-[920px]  lg:grid-cols-4 md:grid-cols-3  gap-4 place-items-center items-center"
       >
         {products &&
-          products.data.map((e: any, i: any) => (
-            <div key={i} id="card">
-              <Card data={e} />
-            </div>
+          products.data.map((e: any, i: React.Key) => (
+            <Card key={i} data={e} />
           ))}
       </div>
       {!products && (

@@ -10,7 +10,6 @@ export const cartStore = create(
       addToCart: (data: any) => {
         const oldCart = get().cart;
         const isInCart = oldCart.find((item: any) => {
-          console.log(item);
           return item.item._id === data._id;
         });
 
@@ -40,7 +39,6 @@ export const cartStore = create(
 
           // Check if the quantity is already 10 or more
           if (currentQuantity >= 10) {
-            console.log("Maximum quantity reached");
             return;
           }
 
@@ -73,7 +71,7 @@ export const cartStore = create(
         const total = cart.reduce((sum: number, item: any) => {
           return sum + item.item.price * item.quantity;
         }, 0);
-        console.log(total);
+
 
         return set({ total: total });
       },
